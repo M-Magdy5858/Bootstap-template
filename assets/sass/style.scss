@@ -1,0 +1,407 @@
+@import './base/mixin';
+@import './base/variables';
+
+@include font('../fonts/KaushanScript-Regular.ttf', kaushan);
+@include font('../fonts/Roboto-Regular.ttf', robotoRegular);
+@include font('../fonts/Montserrat-Regular.ttf', montRegular);
+@include font('../fonts/Montserrat-Bold.ttf', montBold);
+
+html {
+	font-size: 12px;
+	@include mediaQ(md) {
+		font-size: 13px;
+	}
+	@include mediaQ(xlg) {
+		font-size: 14px;
+	}
+}
+h2 {
+	font-family: montBold;
+}
+h4 {
+	font-family: kaushan;
+	font-size: 1.5rem;
+}
+h6 {
+	font-family: montRegular;
+	font-size: 0.933rem;
+}
+p {
+	font-family: robotoRegular;
+}
+a {
+	text-decoration: none;
+}
+// ===== N a v b a r =====
+nav.navbar {
+	.navbar-brand {
+		font-family: montBold;
+		font-size: 2rem;
+	}
+	.nav-item {
+		margin-left: 2rem;
+		font-size: 1rem;
+	}
+	li:hover {
+		a {
+			color: #fce38a;
+			border-bottom: 3px solid #fce38a;
+		}
+	}
+	a.nav-link {
+		color: white;
+		border-bottom: 3px solid transparent;
+		&.active {
+			color: #fce38a;
+			border-bottom: 3px solid #fce38a;
+		}
+	}
+	.navbar-collapse.collapse.show {
+		background-color: rgba(0, 0, 0, 0.85);
+		padding: 2rem;
+	}
+	&.scrolling {
+		background-color: rgba(241, 114, 114, 0.95);
+		a.active,
+		li:hover a {
+			border-color: transparent;
+		}
+		.navbar-collapse.collapse.show {
+			background-color: transparent;
+		}
+	}
+}
+// ==== H E A D E R  section ====
+header {
+	background-image: url(../images/bg-header.jpg);
+	background-size: cover;
+	background-position: center center;
+
+	&::before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		background-image: $grediant;
+	}
+	.carousel {
+		h2 {
+			font-family: kaushan;
+			font-size: 2rem;
+			@include mediaQ(sm) {
+				font-size: 3rem;
+			}
+		}
+		h1 {
+			font-family: montBold;
+			font-size: 4.7rem;
+			letter-spacing: -0.08em;
+			margin-bottom: 4rem;
+			@include mediaQ(sm) {
+				font-size: 7rem;
+			}
+		}
+		h1::after {
+			content: '__________';
+			position: absolute;
+			font-size: 2rem;
+			color: white;
+			bottom: -12%;
+			left: 50%;
+			transform: translate(-50%);
+			z-index: 1;
+		}
+		.carousel-indicators [data-bs-target] {
+			width: 20%;
+			text-indent: 0;
+			text-align: left;
+			color: white;
+			margin-inline: 1rem;
+			line-height: 2.5rem;
+		}
+		.carousel-indicators [data-bs-target].active {
+			background-image: linear-gradient(90deg, $orange 0%, $orange 30%, white 30%);
+		}
+		.carousel-item button:hover {
+			color: $orange;
+		}
+	}
+}
+// ====== Repeated Sections Header ===
+.sec-header {
+	width: 85%;
+	h2::after {
+		content: '';
+		width: 4rem;
+		height: 2px;
+		background-color: $orange;
+		position: absolute;
+		top: 170%;
+		left: 50%;
+		transform: translate(-50%);
+	}
+}
+.image {
+	position: relative;
+	.overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-image: $grediant;
+		top: 0;
+		opacity: 0;
+	}
+	&:hover {
+		top: -10px;
+		left: -10px;
+		box-shadow: 10px 10px 0px $primary;
+		.overlay {
+			opacity: 1;
+		}
+	}
+}
+// ==== F a c t s  section ====
+section.facts {
+	background-color: $primary;
+	p {
+		font-family: montRegular;
+		font-size: 0.933rem;
+	}
+	.number {
+		font-family: montBold;
+		font-size: 4.8rem;
+	}
+}
+// ==== S e r v i c e s  section ====
+.serv {
+	&:last-child {
+		border: none !important;
+	}
+
+	@include mediaQ(md) {
+		&:nth-child(5) {
+			border: none !important;
+		}
+	}
+	@include mediaQ(lg) {
+		&:nth-child(4) {
+			border: none !important;
+		}
+	}
+}
+// ===  D E S I G N  section ====
+section.design {
+	background-image: url(../images/unique-design/bg-unique-design.jpg);
+	background-size: cover;
+	.big-phone {
+		width: 65%;
+
+		@include mediaQ(sm) {
+			width: 50%;
+		}
+		@include mediaQ(xlg) {
+			width: 35%;
+		}
+	}
+	.small-phone {
+		position: absolute;
+		bottom: -10%;
+		right: 5%;
+		width: 25%;
+		@include mediaQ(sm) {
+			width: 20%;
+			right: 15%;
+		}
+		@include mediaQ(xlg) {
+			width: 15%;
+			right: 23%;
+		}
+	}
+}
+// ==== WHAT  WE  DO Section =====
+.what-we-do {
+	.accordion {
+		button.accordion-button {
+			&:not(.collapsed) {
+				color: black;
+				background-color: transparent;
+			}
+			&:focus {
+				box-shadow: none;
+			}
+			&:hover {
+				color: gray;
+			}
+		}
+		.accordion-body {
+			overflow-y: scroll;
+			text-overflow: clip;
+			line-height: 1.5rem;
+			height: 9rem;
+
+			&::-webkit-scrollbar {
+				width: 5px;
+			}
+			&::-webkit-scrollbar-track {
+				background-color: rgb(240, 240, 240);
+			}
+			&::-webkit-scrollbar-thumb {
+				background-color: #95e1d4;
+				border-radius: 5px;
+			}
+		}
+		.accordion-item:not(:first-of-type) {
+			border: 1px solid #dee2e6;
+			margin-top: 1.5rem;
+		}
+	}
+	.photo {
+		height: 26rem;
+	}
+}
+.line {
+	width: 70px;
+	height: 3px;
+	bottom: 2px;
+	background-color: $orange;
+}
+.quotes,
+.testimonials {
+	background-color: whitesmoke;
+	blockquote {
+		font-style: italic;
+	}
+	.name {
+		h4 {
+			font-family: kaushan;
+		}
+	}
+	.carousel-control-prev-icon,
+	.carousel-control-next-icon {
+		filter: invert(0.5);
+	}
+}
+.our-team {
+	.icon {
+		font-size: 3rem;
+		color: $orange;
+		padding: 0.1rem 0.8rem;
+		margin: 0.5px;
+		background-color: $yellow;
+		&:hover {
+			color: white;
+			background-color: $orange;
+			cursor: pointer;
+		}
+		@include mediaQ(lg) {
+			font-size: 2rem;
+		}
+	}
+}
+// ==
+.logos {
+	background-color: whitesmoke;
+	img {
+		transition: 500ms all ease;
+		&:hover {
+			scale: 1.1;
+		}
+	}
+}
+// ===== O u r  W o r k  Section ====
+.work {
+	.overlay {
+		position: absolute;
+		width: 100%;
+		// height: 100%;
+		background-image: $grediant;
+		top: 100%;
+		transition: 0.3s all ease;
+	}
+	.pic:hover {
+		.overlay {
+			top: 0;
+			left: 0;
+		}
+	}
+}
+// ==== H a p p y  C l i e n t s   section ====
+.happy-clients {
+	background-image: url('../images/happy-client/bg-happy-client.jpg');
+	background-size: cover;
+}
+// ==== B l o g  section ====
+.blog {
+	a {
+		color: #7bd3c4;
+	}
+	.date-card {
+		position: absolute;
+		bottom: 20%;
+		left: -5%;
+		background-color: #7bd3c4;
+		color: white;
+		text-align: center;
+		padding: 10px 20px;
+		p {
+			font-family: montbold;
+		}
+	}
+}
+// ==== M a p  section ====
+.map {
+	background-image: url(../images/map/bg-map.jpg);
+	background-size: cover;
+	color: $orange;
+	p::after {
+		content: '';
+		width: 4rem;
+		height: 3px;
+		background-color: $orange;
+		position: absolute;
+		top: 125%;
+		left: 50%;
+		transform: translate(-50%);
+	}
+}
+// ==== F o o t e r  section ====
+footer {
+	.logo a {
+		font-size: 3rem;
+		font-family: montbold;
+		color: lightgray;
+	}
+	.icons a {
+		color: #95e1d4;
+		padding: 1px;
+	}
+	button {
+		background-color: #95e1d4;
+	}
+	input {
+		border: 1px solid rgb(220, 220, 220);
+		padding: 1rem;
+		&:focus-visible {
+			border: 1px solid #95e1d4;
+			outline: none;
+		}
+	}
+	h5 {
+		font-family: montregular;
+		font-weight: 600;
+	}
+	.blog a,
+	a {
+		color: #2ec06c;
+		font-size: 12px;
+		font-weight: 600;
+	}
+	.insta-img {
+		width: 8rem;
+		margin: 1px;
+		@include mediaQ(sm) {
+			width: 7rem;
+		}
+	}
+}
